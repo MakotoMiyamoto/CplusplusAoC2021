@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "CMakelists.txt": "cmake",
+        "map": "cpp",
+        "utility": "cpp"
+    },
+    "cmake.configureOnOpen": false
+}

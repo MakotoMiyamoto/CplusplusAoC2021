@@ -1,0 +1,12 @@
+        // for (auto &[day, count] : fish_timers) {
+        //     std::cout << day << '\n';
+        //     if (day == 0) {
+        //         fish_timers[8] += count;
+        //         fish_timers[6] += count;
+        //         fish_timers[day] = last;
+        //     } else {
+        //         int tmp = count;
+        //         fish_timers[day] = last;
+        //         last = tmp;
+        //     }
+        // }

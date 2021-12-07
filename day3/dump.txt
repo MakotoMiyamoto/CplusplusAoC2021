@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <bitset>
+#include <limits>
+
+// #include <iterator>
+// std::copy(weight_array, weight_array + bits, std::ostream_iterator<short>{ std::cout, ", " });
+
+constexpr size_t ARR_SIZE = 12;
+
+int main() {
+    short weight_array[ARR_SIZE]{}; // todo make bitlength independent (heap alloc)
+    unsigned short gamma{}, epsilon;
+    std::ifstream ifs{ "./in.txt" };
+    while (ifs.good()) {
+        size_t state = 0;
+        while (ifs.peek() != '\n' && state < ARR_SIZE) {
+            char a = ifs.get(); if (! ifs.good()) break;
+            int c = a - '0';
+            weight_array[state++] += c ? 1 : -1;
+        }
+        ifs.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    short aux{};
+    for (auto n : weight_array) {
+        if (n == 0) { // base case for dynamic data sets
+            break;
+        }
+        gamma += n > 0 ? 1 : 0;
+        gamma <<= 1;
+        aux += 1;
+        aux <<= 1;
+    }
+    gamma >>= 1;
+    aux >>= 1;
+    epsilon = ~gamma & aux;
+    std::cout << gamma * epsilon;
+}
